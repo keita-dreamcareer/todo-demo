@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <div>
+        <h2>タスクの一覧</h2>
+        <a href="/create-page">タスクを追加</a>
+        <table border="1">
+            <tr>
+                <th>タスクの名前</th>
+                <th>タスクの説明</th>
+                <th>担当者の名前</th>
+                <th>見積時間(h)</th>
+                <th colspan="2">操作</th>
+            </tr>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.taskName}"></td>
+                <td th:text="${todo.taskDescription}"></td>
+                <td th:text="${todo.assignPersonName}"></td>
+                <td th:text="${todo.estimateHour}"></td>
+                <td><a th:href="@{/edit-page/{id}(id=${todo.id})}">編集</a></td>
+                <td><a th:href="@{/delete-page/{id}(id=${todo.id})}">削除</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

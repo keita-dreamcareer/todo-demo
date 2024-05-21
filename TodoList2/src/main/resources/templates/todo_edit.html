@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+	<link rel="stylesheet" type="text/css" 	th:href="@{/css/edit_pege.css}">
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <div>
+        <h2>タスクの修正</h2>
+        <form method="post" th:action="@{/edit}" th:object="${todo}">
+            <input type="hidden" name="id" th:value="${todo.id}">
+            <p>
+                タスクの名前：<input type="text" name="taskName" th:value="*{taskName}">
+            </p>
+            <p>
+                タスクの説明：<input type="text" name="taskDescription" th:value="*{taskDescription}">
+            </p>
+            <p>
+                担当者の名前：<input type="text" name="assignPersonName" th:value="*{assignPersonName}">
+            </p>
+            <p>
+                見積時間(h) ：<input type="number" name="estimateHour" th:value="*{estimateHour}">
+            </p>
+            <input type="submit" name="edit" value="修正">
+        </form>
+        <a th:href="@{/}">戻る</a>
+    </div>
+</body>
+</html>

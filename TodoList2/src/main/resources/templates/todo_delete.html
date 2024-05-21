@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoリスト</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/delete_page.css}">
+</head>
+<body>
+    <div>
+        <h2>タスクを削除</h2>
+        <form method="post" th:action=" @{/delete/{id}(id=${todo.id})}" >
+            <p>タスクの名前：<span th:text="${todo.taskName}"></span></p>
+            <p>タスクの説明：<span th:text="${todo.taskDescription}"></span></p>
+            <p>担当者の名前：<span th:text="${todo.assignPersonName}"></span></p>
+            <p>見積時間(h)：<span th:text="${todo.estimateHour}"></span></p>
+            <input type="submit" value="削除">
+        </form>
+        <a href="/">戻る</a>
+    </div>
+</body>
+</html>

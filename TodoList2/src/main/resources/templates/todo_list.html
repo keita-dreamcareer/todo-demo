@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="header">
+        <h1>ToDo List</h1>
+    </div>
+    <div class="add-task">
+		<form class="filter-form" th:action="@{/filter}" method="post">
+	        <input type="text" name="word" placeholder="検索...">
+	        <button type="submit">検索</button>
+	        <button type="button" class="reset" onclick="window.location.href='/'">リセット</button>
+	    </form>
+        <a class="register-button" href="/create-page">タスクを追加</a>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>タスクの名前</th>
+                    <th>タスクの説明</th>
+                    <th>担当者の名前</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="todo : ${todos}">
+					<td th:text="${#strings.length(todo.taskName) &gt; 10} ? ${#strings.substring(todo.taskName, 0, 10)} + '...' : ${todo.taskName}"></td>
+					<td th:text="${#strings.length(todo.taskDescription) &gt; 10} ? ${#strings.substring(todo.taskDescription, 0, 10)} + '...' : ${todo.taskDescription}"></td>
+                    <td th:text="${todo.assignPersonName}"></td>
+                    <td>
+                        <div class="button-group">
+                            <a class="edit-button" th:href="@{'/edit-page/' + ${todo.id}}">編集</a>
+                            <a class="delete-button" th:href="@{'/delete-page/' + ${todo.id}}">削除</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+

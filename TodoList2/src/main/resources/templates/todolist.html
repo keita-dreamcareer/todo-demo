@@ -23,8 +23,8 @@
                 <td th:text="${todo.taskDescription}"></td>
                 <td th:text="${todo.assignPersonName}"></td>
                 <td th:text="${todo.estimateHour}"></td>
-                <td><a th:href="@{/edit-page/{id}(id=${todo.id})}">編集</a></td>
-                <td><a th:href="@{/delete-page/{id}(id=${todo.id})}">削除</a></td>
+                <td><a th:href="@{'/edit-page/' + ${todo.id}}">編集</a></td>
+                <td><a th:href="@{'/delete-page/' + ${todo.id}}">削除</a></td>
             </tr>
         </table>
     </div>

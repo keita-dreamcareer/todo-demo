@@ -120,11 +120,11 @@ public class MyController {
 		return "todo_list";
 	}
 	
-//	@GetMapping("/todos")
-//	public List<Todo> showTodos(Model model) {
-//		List <Todo> todos = todoService.searchAll();
-//		return todos;
-//	}
+	@GetMapping("/todos")
+	public List<Todo> showTodos(Model model) {
+		List <Todo> todos = todoService.searchAll();
+		return todos;
+	}
 	
 	
 	
